@@ -30,7 +30,7 @@ src/
 ├── main_executable_module.c
 ├── Makefile
 
-
+```
 ---
 
 # 🧩 2. Modules
@@ -63,4 +63,23 @@ int print_data(double *data, int n) {
         printf("%.2lf ", data[i]);
     return 0;
 }
+```
 
+data_io.c
+```c
+#include <stdio.h>
+#include "data_io.h"
+
+int read_data(double *data, int n) {
+    for (int i = 0; i < n; i++)
+        if (scanf("%lf", &data[i]) != 1)
+            return 1;
+    return 0;
+}
+
+int print_data(double *data, int n) {
+    for (int i = 0; i < n; i++)
+        printf("%.2lf ", data[i]);
+    return 0;
+}
+```
