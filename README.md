@@ -6,7 +6,7 @@ Bu project C tilida modular architecture, static va dynamic library, macro-based
 ---
 
 # 📁 1. Project Structure
-```text
+```markdown
 src/
 │
 ├── data_libs/
@@ -132,6 +132,10 @@ double variance(double *data, int n) {
 ```
 
 2.3 data_io_macro — parametrik makrolar (Quest 4)
+Bu file repositoryda yo'q. Yaratish:
+```bash
+touch data_io_macro.h
+```
 ```c
 #ifndef DATA_IO_MACRO_H
 #define DATA_IO_MACRO_H
@@ -184,7 +188,7 @@ int normalization(double *data, int n) {
 }
 ```
 
-🔌 4. data_module_entry — kirish/chiqish va normalization
+🔌 4. data_module_entry.c — kirish/chiqish va normalization
 ```c
 #include <stdio.h>
 #include <stdlib.h>
@@ -335,33 +339,33 @@ build_with_dynamic: data_process.so
 
 🧪 7. Testing
 
-Singular input:
-```text
-3 1 2 3
+Hamma commandlar main_executable_module folder ichida yoziladi:
+```bash
+cd src/main_executable_module
 ```
 
 Normal:
 ```bash
 make
-./app
+echo "3 1 2 3" | ./app
 ```
 
 Static:
 ```bash
 make build_with_static
-./app_static
+echo "3 1 2 3" | ./app_static
 ```
 
 Macro:
 ```bash
 make build_with_macro
-./app_macro
+echo "3 1 2 3" | ./app_macro
 ```
 
 Dynamic:
 ```bash
 make build_with_dynamic
-./app_dynamic
+echo "3 1 2 3" | ./app_dynamic
 ```
 
 🛡 8. Memory Check (Valgrind)
@@ -386,7 +390,26 @@ clang-format -n */*.h
 
 📌 10. Quest Completion Files
 
-Final build papkasida bo‘lishi shart:
+Har bitta Quest uchun Quest_X file ochiladi, ichiga hechnarsa yozilmaydi va build folderga git push qilinadi:
+
+```bash
+cd build
+touch Quest_1
+touch Quest_2
+touch Quest_3
+touch Quest_4
+touch Quest_5
+touch Quest_6
+```
+Keyin, GitLabga push qilinadi:
+
+```bash
+git add build
+git commit -m "All Quest_X added"
+git push origin develop
+```
+
+Quyidagi ko'rinishida push bo'lishi kerak:
 
 ```markdown
 build/
@@ -398,19 +421,47 @@ build/
     Quest_6
 ```
 
-Hamma fayllar bo‘sh bo‘lishi kerak.
+📌 11. .gitignore file
 
-🎉 Xulosa
+Asosiy *rootda .gitignore yaratiladi:
 
-Bu project davomida:
+*project boshlang'ich joyida
 
-✔ Modular architecture
-✔ Static & Dynamic libraries
-✔ Macro-based input/output
-✔ Makefile automation
-✔ Valgrind memory checks
-✔ Clang-format styling
+```bash
+touch .gitignore
+```
 
-kabi professional C ko‘nikmalar yakuniy darajada o‘zlashtirildi.
+Ichiga quyidagilar yoziladi:
 
-Bu README projectni tushunish uchun yetarli va to‘liq.
+```nginx
+# Executable files
+app
+app_macro
+app_static
+app_dynamic
+
+# Static library
+data_stat.a
+
+# Dynamic library
+data_process.so
+
+# Object files
+*.o
+
+# Backup files
+*~
+*.swp
+*.tmp
+*.log
+```
+
+Project push qilinishidan oldin GitLabga push qilinadi:
+
+```bash
+git add .gitignore
+git commit -m ".gitignore added"
+git push origin develop
+```
+
+
