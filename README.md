@@ -332,3 +332,85 @@ build_with_dynamic: data_process.so
 	../data_libs/data_io.c \
 	-lm -ldl -o app_dynamic
 ```
+
+🧪 7. Testing
+
+Singular input:
+```text
+3 1 2 3
+```
+
+Normal:
+```bash
+make
+./app
+```
+
+Static:
+```bash
+make build_with_static
+./app_static
+```
+
+Macro:
+```bash
+make build_with_macro
+./app_macro
+```
+
+Dynamic:
+```bash
+make build_with_dynamic
+./app_dynamic
+```
+
+🛡 8. Memory Check (Valgrind)
+```bash
+valgrind --tool=memcheck --leak-check=yes ./app
+valgrind --tool=memcheck --leak-check=yes ./app_static
+valgrind --tool=memcheck --leak-check=yes ./app_dynamic
+```
+
+
+Kutilgan natija:
+```bash
+All heap blocks were freed -- no leaks are possible
+ERROR SUMMARY: 0 errors
+```
+
+🧹 9. Clang-format
+```bash
+clang-format -n */*.c
+clang-format -n */*.h
+```
+
+📌 10. Quest Completion Files
+
+Final build papkasida bo‘lishi shart:
+
+```markdown
+build/
+    Quest_1
+    Quest_2
+    Quest_3
+    Quest_4
+    Quest_5
+    Quest_6
+```
+
+Hamma fayllar bo‘sh bo‘lishi kerak.
+
+🎉 Xulosa
+
+Bu project davomida:
+
+✔ Modular architecture
+✔ Static & Dynamic libraries
+✔ Macro-based input/output
+✔ Makefile automation
+✔ Valgrind memory checks
+✔ Clang-format styling
+
+kabi professional C ko‘nikmalar yakuniy darajada o‘zlashtirildi.
+
+Bu README projectni tushunish uchun yetarli va to‘liq.
