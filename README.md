@@ -383,6 +383,12 @@ ERROR SUMMARY: 0 errors
 ```
 
 🧹 9. Clang-format
+Clang-format ni src filega o'tqazish:
+```bash
+cd materials/linters/.clang-format src/
+```
+
+Tekshirish:
 ```bash
 clang-format -n */*.c
 clang-format -n */*.h
@@ -464,4 +470,14 @@ git commit -m ".gitignore added"
 git push origin develop
 ```
 
+Yakuniy Qism
 
+To'liq project GitLabga push qilinadi:
+
+```bash
+git add src
+git add build
+git add .gitignore
+git commit -m "Full project completed"
+git push origin develop
+```
