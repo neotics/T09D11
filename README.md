@@ -6,7 +6,7 @@ Bu project C tilida modular architecture, static va dynamic library, macro-based
 ---
 
 # 📁 1. Project Structure
-```c
+```text
 src/
 │
 ├── data_libs/
@@ -279,7 +279,7 @@ int main() {
 ```
 
 🏗 6. Makefile (Full Working Version)
-```c
+```makefile
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -std=c11
 
