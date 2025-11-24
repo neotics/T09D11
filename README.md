@@ -7,15 +7,14 @@ Bu project C tilida modular architecture, static va dynamic library, macro-based
 
 # 📁 1. Project Structure
 src/
-│
-├── data_libs/
-│ ├── data_io.c
-│ ├── data_io.h
-│ ├── data_stat.c
-│ ├── data_stat.h
-│ ├── data_io_macro.h
-│
-├── data_module/
+    data_libs/
+        data_io.c
+        data_io.h
+        data_stat.c
+        data_stat.h
+        data_io_macro.h
+        
+    data_module/
 │ ├── data_process.c
 │ ├── data_process.h
 │ ├── data_module_entry.c
