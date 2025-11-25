@@ -243,6 +243,103 @@ int data_module_entry(int (*norm)(double*, int)) {
 }
 ```
 
+⭐ yet_another_decision_module
+decision.c
+
+```bash
+#include "decision.h"
+
+#include <math.h>
+
+#include "../data_libs/data_stat.h"
+
+int make_decision(double *data, int n) {
+    double m = mean(data, n);
+    double sigma = sqrt(variance(data, n));
+    double max_value = max(data, n);
+
+    int ok = 1;
+
+    ok &= (max_value <= m + 3 * sigma);
+    ok &= (max_value >= m - 3 * sigma);
+    ok &= (m >= GOLDEN_RATIO);
+
+    return ok;
+}
+
+```
+
+decision.h
+
+```bash
+#ifndef DECISION_H
+#define DECISION_H
+
+#define GOLDEN_RATIO 0.666
+
+int make_decision(double *data, int n);
+
+#endif
+```
+
+yet_another_decision_module_entry.c
+
+```bash
+#include <stdio.h>
+#include <stdlib.h>
+
+#include "../data_libs/data_stat.h"
+#include "../data_module/data_process.h"
+#include "decision.h"
+
+#ifdef USE_MACRO_IO
+void input_double(double*, int);
+#else
+#include "../data_libs/data_io.h"
+#endif
+
+int yet_another_decision_module_entry() {
+    int n;
+
+    if (scanf("%d", &n) != 1 || n <= 0) {
+        printf("n/a");
+        return 1;
+    }
+
+    double* data = malloc(n * sizeof(double));
+    if (!data) {
+        printf("n/a");
+        return 1;
+    }
+
+#ifdef USE_MACRO_IO
+    input_double(data, n);
+#else
+    if (read_data(data, n) != 0) {
+        free(data);
+        printf("n/a");
+        return 1;
+    }
+#endif
+
+    if (normalization(data, n) != 0) {
+        free(data);
+        printf("n/a");
+        return 1;
+    }
+
+    if (make_decision(data, n))
+        printf("YES");
+    else
+        printf("NO");
+
+    free(data);
+    return 0;
+}
+
+```
+
+
 🧠 5. Dynamic Library (Quest 6)
 main_executable_module.c
 ```c
